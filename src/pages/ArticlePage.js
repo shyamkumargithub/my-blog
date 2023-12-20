@@ -4,6 +4,10 @@ import ArticleList from "../components/ArticleList";
 import articleContent from "./article-content";
 
 const ArticlePage = () => {
+
+  React.useEffect(() => {
+    document.title = 'Article';
+  }, []);
   //use useParams instead of match
   const { name } = useParams();
   const article = articleContent.find((article) => article.name === name);

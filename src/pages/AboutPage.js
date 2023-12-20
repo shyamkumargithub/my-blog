@@ -1,6 +1,9 @@
 import React from 'react'
 
 export default function AboutPage() {
+  React.useEffect(() => {
+    document.title = 'About';
+  }, []);
   return (
     <>
       <h1>About Me</h1>

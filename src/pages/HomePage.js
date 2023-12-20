@@ -2,7 +2,9 @@ import React,{useEffect} from "react";
 import { createRoot } from "react-dom/client";
 import { Helmet } from "react-helmet";
 const HomePage = () => {
-
+  React.useEffect(() => {
+    document.title = 'Home';
+  }, []);
   return (
     <>
       <h1>Hello, welcome to my blog!</h1>
