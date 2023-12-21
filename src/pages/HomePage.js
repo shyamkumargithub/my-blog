@@ -1,12 +1,24 @@
 import React,{useEffect} from "react";
-import { createRoot } from "react-dom/client";
+import ReactDOM from "react-dom/client";
 import { Helmet } from "react-helmet";
+import ReactGA from "react-ga";
+import NewComponent from "../components/NewComponent";
 const HomePage = () => {
   React.useEffect(() => {
     document.title = 'Home';
   }, []);
+
+  const useAnalyticsEventTracker = (category = "Blog category") => {
+    const eventTracker = (action = "test action", label = "test label") => {
+      ReactGA.event({ category, action, label });
+    };
+    return eventTracker;
+  };
+
+  const gaEventTracker = useAnalyticsEventTracker("Contact us");
   return (
     <div className="max-w-full rounded overflow-hidden shadow-lg">
+    <NewComponent/>
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
         <p className="text-gray-700 text-base">
@@ -141,6 +153,7 @@ const HomePage = () => {
           <button
             className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
             type="button"
+            onProgress={()=>gaEventTracker('submit button')}
           >
             Sign Up
           </button>
