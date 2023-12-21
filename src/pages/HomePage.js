@@ -18,7 +18,7 @@ const HomePage = () => {
   const gaEventTracker = useAnalyticsEventTracker("Contact us");
   return (
     <div className="max-w-full rounded overflow-hidden shadow-lg">
-    <NewComponent/>
+ 
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
         <p className="text-gray-700 text-base">
