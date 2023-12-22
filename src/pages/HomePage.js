@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { Helmet } from "react-helmet";
 import ReactGA from "react-ga";
 import NewComponent from "../components/NewComponent";
+import { TrackGoogleAnalyticsEvent } from "../utils";
 const HomePage = () => {
   React.useEffect(() => {
     document.title = 'Home';
@@ -12,13 +13,13 @@ const HomePage = () => {
     const eventTracker = (action = "test action", label = "test label") => {
       ReactGA.event({ category, action, label });
     };
+    console.log('-------event tracker ',eventTracker)
     return eventTracker;
   };
 
   const gaEventTracker = useAnalyticsEventTracker("Contact us");
   return (
     <div className="max-w-full rounded overflow-hidden shadow-lg">
- 
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
         <p className="text-gray-700 text-base">
@@ -153,7 +154,13 @@ const HomePage = () => {
           <button
             className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
             type="button"
-            onProgress={()=>gaEventTracker('submit button')}
+            onClick={() =>
+              TrackGoogleAnalyticsEvent(
+                "user register",
+                "click sign in button",
+                window.location.pathname
+              )
+            }
           >
             Sign Up
           </button>

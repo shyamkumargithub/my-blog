@@ -8,12 +8,13 @@ import NavBar from "./NavBar";
 import ArticlePage from "./pages/ArticlePage";
 import NotFoundPage from "./pages/NotFoundPage";
 import ReactGA from "react-ga";
+import InitializeGoogleAnalytics from "./utils";
 const TRACKING_ID = "G-RN0T3SKYR6"; // OUR_TRACKING_ID
 ReactGA.initialize(TRACKING_ID);
 
 function App() {
    React.useEffect(() => {
-     ReactGA.pageview(window.location.pathname + window.location.search);
+     InitializeGoogleAnalytics()
    }, []);
   return (
     <div className="App">
